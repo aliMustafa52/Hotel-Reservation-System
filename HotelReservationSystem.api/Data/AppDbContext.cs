@@ -25,6 +25,14 @@ namespace HotelReservationSystem.api.Data
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
+            var cascadeFks = modelBuilder.Model
+                .GetEntityTypes()
+                .SelectMany(t => t.GetForeignKeys())
+                .Where(fk => fk.DeleteBehavior == DeleteBehavior.Cascade && !fk.IsOwnership);
+
+            foreach (var fk in cascadeFks)
+                fk.DeleteBehavior = DeleteBehavior.Restrict;
+
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -12,6 +12,12 @@ namespace HotelReservationSystem.api.Data.ModelsConfigurations
 
             builder.Property(f => f.StaffResponse)
                 .HasMaxLength(2000);
+
+            //builder.HasOne(f => f.RespondingStaff)
+            //    .WithMany(s => s.FeedbackResponses)
+            //    .HasForeignKey(f => f.RespondingStaffId)
+            //    .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }
