@@ -1,4 +1,9 @@
-﻿namespace HotelReservationSystem.api
+﻿using HotelReservationSystem.api.Services.FacilitiesService;
+using HotelReservationSystem.api.Services.RoomsService;
+using HotelReservationSystem.api.Services.RoomTypeServices;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace HotelReservationSystem.api
 {
     public static class DependencyInjection
     {
@@ -18,6 +23,9 @@
             //<> syntax denotes an "open generic type."
             services.AddScoped(typeof(IGeneralRepository<>), typeof(GeneralRepository<>));
 
+            services.AddScoped<IRoomTypeService, RoomTypeService>();
+            services.AddScoped<IFacilityService, FacilityService>();
+            services.AddScoped<IRoomService, RoomService>();
 
             return services;
         }

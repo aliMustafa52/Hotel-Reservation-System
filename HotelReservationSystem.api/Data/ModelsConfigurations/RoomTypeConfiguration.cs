@@ -11,6 +11,9 @@ namespace HotelReservationSystem.api.Data.ModelsConfigurations
 
             builder.HasIndex(rt => rt.Name)
                 .IsUnique();
+
+            builder.Property(rt => rt.Description)
+                .HasMaxLength(1000);
         }
     }
 }

@@ -27,4 +27,5 @@ global using HotelReservationSystem.api.Abstractions;
 global using HotelReservationSystem.api.Contracts.Authentication;
 global using HotelReservationSystem.api.Authentication;
 global using HotelReservationSystem.api.Errors;
+global using HotelReservationSystem.api.Contracts.Facilities;
 
