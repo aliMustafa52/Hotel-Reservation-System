@@ -1,7 +1,5 @@
 ﻿using HotelReservationSystem.api.Contracts.Rooms;
 using HotelReservationSystem.api.Services.RoomsService;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace HotelReservationSystem.api.Controllers
 {

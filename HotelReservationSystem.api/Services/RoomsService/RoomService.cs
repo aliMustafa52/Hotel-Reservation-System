@@ -40,7 +40,9 @@ namespace HotelReservationSystem.api.Services.RoomsService
             if (!await _roomTypeRepository.AnyAsync(rt => rt.Id == request.RoomTypeId, cancellationToken))
                 return Result.Failure<RoomResponse>(RoomTypeErrors.NotFound);
 
-            var facilities = await _facilityRepository.Get(f => request.FacilityIds.Contains(f.Id)).ToListAsync(cancellationToken);
+            var facilities = await _facilityRepository.Get(f => request.FacilityIds.Contains(f.Id))
+                    .AsTracking()
+                    .ToListAsync(cancellationToken);
             if (facilities.Count != request.FacilityIds.Count)
                 return Result.Failure<RoomResponse>(FacilityErrors.NotFound);
 

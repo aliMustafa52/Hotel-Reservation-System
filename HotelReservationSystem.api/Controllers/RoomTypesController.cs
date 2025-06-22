@@ -36,7 +36,7 @@ namespace HotelReservationSystem.api.Controllers
             var result = await _roomTypeService.AddAsync(request, cancellationToken);
 
             return result.IsSuccess
-                ? CreatedAtAction(nameof(GetRoomTypeById), new { id = result.Value.Id }, request)
+                ? CreatedAtAction(nameof(GetRoomTypeById), new { id = result.Value.Id }, result.Value)
                 : result.ToProblem();
         }
 

@@ -2,6 +2,7 @@
 using HotelReservationSystem.api.Services.RoomsService;
 using HotelReservationSystem.api.Services.RoomTypeServices;
 using Microsoft.Extensions.DependencyInjection;
+using System.Text.Json.Serialization;
 
 namespace HotelReservationSystem.api
 {
@@ -9,7 +10,13 @@ namespace HotelReservationSystem.api
     {
         public static IServiceCollection AddDependencies(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    // This line is the fix. It tells the API to serialize/deserialize enums as strings.
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                }); ;
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
